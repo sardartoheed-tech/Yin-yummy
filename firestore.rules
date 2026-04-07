@@ -1,0 +1,50 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    function isDocOwner() {
+      return isAuthenticated() && request.auth.uid == resource.data.userId;
+    }
+    function isValidOrder(data) {
+      return data.userId is string &&
+             data.items is list &&
+             data.total is number &&
+             data.total > 0 &&
+             data.status in ['pending', 'preparing', 'out-for-delivery', 'delivered'] &&
+             data.createdAt is number;
+    }
+    function isValidUser(data) {
+      return data.uid is string &&
+             data.email is string &&
+             data.displayName is string;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      allow create, update: if isOwner(userId) && isValidUser(request.resource.data);
+    }
+
+    match /orders/{orderId} {
+      allow read: if isAuthenticated() && (request.auth.uid == resource.data.userId || isAdmin());
+      allow create: if isAuthenticated() && request.resource.data.userId == request.auth.uid && isValidOrder(request.resource.data);
+      allow update: if isAuthenticated() && (isAdmin() || (isDocOwner() && request.resource.data.status == resource.data.status));
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && 
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+         request.auth.token.email == "i.sardartoheed@gmail.com");
+    }
+  }
+}
