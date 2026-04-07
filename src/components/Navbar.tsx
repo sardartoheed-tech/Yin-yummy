@@ -33,7 +33,7 @@ export default function Navbar({ cartCount, onCartClick }: NavbarProps) {
         className="flex items-center gap-2"
       >
         <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center font-bold text-white text-xl">Y</div>
-        <span className="text-white font-bold text-xl tracking-tighter">YIN & YUMMY</span>
+        <span className="text-white font-bold text-xl tracking-tighter uppercase">Yin and yummy</span>
       </motion.div>
 
       <div className="flex items-center gap-6">

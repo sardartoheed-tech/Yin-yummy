@@ -143,11 +143,11 @@ export default function App() {
             transition={{ duration: 0.8 }}
           >
             <span className="text-orange-500 font-bold tracking-[0.3em] uppercase text-sm mb-4 block">Authentic Chinese & Continental</span>
-            <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6 leading-none">
-              YIN & <span className="text-orange-500">YUMMY</span>
+            <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6 leading-none uppercase">
+              Yin and <span className="text-orange-500">yummy</span>
             </h1>
             <p className="text-white/60 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-              Experience the perfect balance of flavors at Yin & Yummy by DFC. From sizzling steaks to authentic Chinese delicacies, we bring the best to your table.
+              Experience the perfect balance of flavors at Yin and yummy. From sizzling steaks to authentic Chinese delicacies, we bring the best to your table.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button 
@@ -265,7 +265,7 @@ export default function App() {
           <div className="space-y-6">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center font-bold text-white">Y</div>
-              <span className="text-white font-bold text-xl tracking-tighter">YIN & YUMMY</span>
+              <span className="text-white font-bold text-xl tracking-tighter uppercase">Yin and yummy</span>
             </div>
             <p className="text-white/40 text-sm leading-relaxed">
               Serving the finest Chinese and Continental cuisine since 2010. Quality ingredients, authentic taste, and exceptional service.
@@ -327,7 +327,7 @@ export default function App() {
           </div>
         </div>
         <div className="max-w-7xl mx-auto pt-20 mt-20 border-t border-white/5 text-center text-white/20 text-xs">
-          &copy; 2026 Yin & Yummy by DFC. All rights reserved.
+          &copy; 2026 Yin and yummy. All rights reserved.
         </div>
       </footer>
 
